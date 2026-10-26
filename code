@@ -1,0 +1,27 @@
+data(iris) #load the iris dataset in
+head(iris) #the top 6 values of each variable
+library(lattice) #open 'lattice'
+library(ggplot2) #open ggplot2
+
+#Scatter plot that shows SL vs PL
+plot(iris$Sepal.Length, iris$Petal.Length,
+     main = "Sepal length versus Petal length",
+     xlab = "Sepal Length",
+     ylab = "Petal Length")
+
+#Histogram that shows SW variation
+hist(iris$Sepal.Width,
+     main = "Sepal Width variations across three species",
+     xlab = "Sepal Width")
+
+#lattice bwplot of SL variations by species 
+xyplot(Sepal.Length ~ Species,
+       data = iris,
+       main = " Lattice:Sepal Length by Species")
+
+#Scatter plot with Smoothing
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = factor(Species))) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "GGplot2 =Sepal Length versus Petal Width by Species(color)")
+
